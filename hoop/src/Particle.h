@@ -11,18 +11,21 @@ public:
 	float radius;
 	ofVec2f speed;
 	long lifetime; //long is een grote int
-	float xCos, ySin;	
 
-	ofColor centerColor = ofColor::white;
+	ofColor centerColor;
 	ofColor innerColor;
 	ofColor outerColor;
 
+	float p_xCos, p_ySin;
+	float p_ampX, p_ampY;
+
 	Particle();
-	Particle(float _xCos, float _ySin);
+	Particle(ofVec3f _position, float _xCos, float _ySin);
 
 	void setup();
 	void move();
 	void draw();
-
+	void setColors(ofColor center, ofColor inner, ofColor outer);
+	void setAmp(float _ampX, float _ampY);
 };
 

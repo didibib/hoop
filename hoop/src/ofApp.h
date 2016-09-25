@@ -8,8 +8,8 @@ class ofApp : public ofBaseApp{
 
 	public:
 		ofxPanel gui;
-		ofParameter<float> xCos;
-		ofParameter<float> yCos;
+		ofParameter<float> ampX;
+		ofParameter<float> ampY;
 
 		void setup();
 		void update();

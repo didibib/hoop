@@ -4,28 +4,44 @@ Particle::Particle() {
 
 }
 
-Particle::Particle(float _xCos, float _ySin) {
+Particle::Particle(ofVec3f _position, float _xCos, float _ySin) {
 	radius = ofRandom(1, 20);
-	position = ofPoint(ofGetWidth() / 2, ofGetHeight() / 2);
-	speed = ofVec2f(ofRandom(-5, 5), ofRandom(-5, 5));
+	position = _position;
 
+	centerColor = ofColor::white;
 	innerColor = ofColor(102, 0, 102, 127);
 	outerColor = ofColor(128, 255, 255, 15);
+	
+	p_xCos = _xCos * ofRandom(1, 5);
+	p_ySin = _ySin * ofRandom(1, 5);
 
-	xCos = ofRandom(0.01, 100);
-	ySin = ofRandom(0.01, 100);
+	p_ampX = 0.01;
+	p_ampY = 0.01;
 }
 
 void Particle::setup() {
-	
+
 }
 
 
 void Particle::move() {
-	position.x = ofMap(cos(xCos), -1, 1, 0, ofGetWidth());
-	position.y = ofMap(sin(ySin), -1, 1, 0, ofGetHeight());
-	xCos += 0.01;
-	ySin += 0.01;
+	float map_xCos = ofMap(cosf(p_xCos), -1, 1, 0, ofGetWidth());
+	float map_ySin = ofMap(sin(p_ySin), -1, 1, 0, ofGetHeight());
+	position.x = map_xCos;
+	position.y = map_ySin;
+	p_xCos += p_ampX;
+	p_ySin += p_ampY;
+}
+
+void Particle::setColors(ofColor center, ofColor inner, ofColor outer) {
+	centerColor = center;
+	innerColor = inner;
+	outerColor = outer;
+}
+
+void Particle::setAmp(float _ampX, float _ampY) {
+	p_ampX = _ampX;
+	p_ampY = _ampY;
 }
 
 void Particle::draw() {
