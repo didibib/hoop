@@ -23,14 +23,13 @@ void Particle::setup() {
 
 }
 
-
 void Particle::move() {
 	float map_xCos = ofMap(cosf(p_xCos), -1, 1, 0, ofGetWidth());
 	float map_ySin = ofMap(sin(p_ySin), -1, 1, 0, ofGetHeight());
+	map_xCos += p_ampX;
+	map_ySin += p_ampY;
 	position.x = map_xCos;
-	position.y = map_ySin;
-	p_xCos += p_ampX;
-	p_ySin += p_ampY;
+	position.y = map_ySin;	
 }
 
 void Particle::setColors(ofColor center, ofColor inner, ofColor outer) {
