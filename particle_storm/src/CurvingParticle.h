@@ -8,6 +8,7 @@ public:
 
 	void move();
 
+	CurvingParticle(float _originX, float _originY);
 	CurvingParticle();
 };
 
