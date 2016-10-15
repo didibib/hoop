@@ -1,10 +1,12 @@
 #include "ParticleEmitter.h"
 
+ParticleEmitter::ParticleEmitter(){}
+
 Particle* ParticleEmitter::emit() {
 	Particle* newParticle;
 
 	float r = ofRandom(1);
-	if (r < ratio && r > 0) {
+	if (r > 0 && r < ratio) {
 		newParticle = new CurvingParticle(originX, originX);
 	}
 	else {
@@ -28,3 +30,13 @@ void ParticleEmitter::setColors(ofColor _center, ofColor _inner, ofColor _outer)
 	inner = _inner;
 	outer = _outer;
 }
+
+ParticleEmitter* ParticleEmitter::instance() {
+	if (!neo) {
+		ParticleEmitter::neo = new ParticleEmitter();
+	}
+
+	return ParticleEmitter::neo;
+}
+
+ParticleEmitter* ParticleEmitter::neo = 0;

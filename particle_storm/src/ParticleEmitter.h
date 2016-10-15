@@ -1,6 +1,5 @@
 #pragma once
 
-#include "ofMain.h"
 #include "Particle.h"
 #include "CurvingParticle.h"
 
@@ -12,11 +11,14 @@ class ParticleEmitter {
 		void setColors(ofColor _center, ofColor _inner, ofColor _outer);
 
 		Particle* emit();
+		static ParticleEmitter* instance();
 
 	private:
 		float ratio;
 		float originX, originY;
 		ofColor center, inner, outer;
-
+		
+		ParticleEmitter();
+		static ParticleEmitter* neo;
 };
 

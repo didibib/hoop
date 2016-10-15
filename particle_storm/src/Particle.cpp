@@ -7,12 +7,14 @@ Particle::Particle(float _originX, float _originY) {
 	speed = ofVec2f(ofRandom(-5, 5), ofRandom(-5, 5));
 	radius = ofRandom(0, 20);
 
-	outerColor = ofColor(105, 127, 110, 54);
-	innerColor = ofColor(221, 139, 154, 189);
+	//outerColor = ofColor(105, 127, 110, 54);
+	//innerColor = ofColor(221, 139, 154, 189);
+	lifetime = 0;
 }
 
 void Particle::move() {
 	position += speed;
+	lifetime++;
 }
 
 void Particle::draw() {
@@ -30,4 +32,8 @@ void Particle::setColors(ofColor center, ofColor inner, ofColor outer) {
 	centerColor = center;
 	innerColor = inner;
 	outerColor = outer;
+}
+
+bool Particle::isDead() {
+	return lifetime > MAX_LIFETIME;
 }

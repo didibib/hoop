@@ -1,4 +1,7 @@
-﻿     Creating library bin\particle_storm_debug.lib and object bin\particle_storm_debug.exp
+﻿  Particle.cpp
+  ParticleEmitter.cpp
+  main.cpp
+  ofApp.cpp
   particle_storm.vcxproj -> C:\Users\Tariq Bakhtali\Desktop\OF\apps\HOOP\particle_storm\bin\particle_storm_debug.exe
   particle_storm.vcxproj -> bin\particle_storm_debug.pdb (Full PDB)
   
