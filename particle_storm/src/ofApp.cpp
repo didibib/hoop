@@ -4,7 +4,7 @@ void ofApp::setup() {
 	for (int i = 0; i < MAX_EMITTERS; i++) {
 		emitters[i] = ParticleEmitter();
 		emitters[i].setOrigin((i + 1) * 200, (i + 1) * 200);
-		emitters[i].setCurvingParticleRatio(ofRandom(0.1, 0.9));
+		emitters[i].setCurvingParticleRatio(0.8);
 		ofColor center = ofColor(ofRandom(255), ofRandom(255), ofRandom(255));
 		ofColor inner =  ofColor(ofRandom(255), ofRandom(255), ofRandom(255), 54);
 		ofColor outer = ofColor(ofRandom(255), ofRandom(255), ofRandom(255), 189);
@@ -13,6 +13,8 @@ void ofApp::setup() {
 }
 
 void ofApp::update() {
+	ofBackground(0);
+
 	for (unsigned int i = 0; i < particles.size(); i++) {
 		particles[i]->move();
 	}
@@ -25,7 +27,6 @@ void ofApp::update() {
 		particles.push_back(freshParticle2);
 	}
 	
-
 	reaper.cleanup(particles);
 
 	ofSetWindowTitle("Particles: " + ofToString(particles.size()));

@@ -11,14 +11,13 @@ class ParticleEmitter {
 		void setColors(ofColor _center, ofColor _inner, ofColor _outer);
 
 		Particle* emit();
-		static ParticleEmitter* instance();
-
+		//static ParticleEmitter* instance();
+		ParticleEmitter();
 	private:
 		float ratio;
 		float originX, originY;
-		ofColor center, inner, outer;
+		ofColor center, inner, outer;	
 		
-		ParticleEmitter();
-		static ParticleEmitter* neo;
+		//static ParticleEmitter* neo;
 };
 
