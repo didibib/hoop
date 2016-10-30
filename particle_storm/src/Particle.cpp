@@ -4,11 +4,8 @@ Particle::Particle(){}
 
 Particle::Particle(float _originX, float _originY) {
 	position = ofVec2f(_originX, _originY);
-	speed = ofVec2f(ofRandom(-5, 5), ofRandom(-5, 5));
+	speed = ofVec2f(ofRandom(-2, 2), ofRandom(-2, 2));
 	radius = ofRandom(0, 20);
-
-	//outerColor = ofColor(105, 127, 110, 54);
-	//innerColor = ofColor(221, 139, 154, 189);
 	lifetime = 0;
 }
 

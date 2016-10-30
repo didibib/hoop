@@ -1,30 +1,23 @@
 #include "ofApp.h"
 
 void ofApp::setup() {
-	for (int i = 0; i < MAX_EMITTERS; i++) {
-		emitters[i] = ParticleEmitter();
-		emitters[i].setOrigin((i + 1) * 200, (i + 1) * 200);
-		emitters[i].setCurvingParticleRatio(0.8);
-		ofColor center = ofColor(ofRandom(255), ofRandom(255), ofRandom(255));
-		ofColor inner =  ofColor(ofRandom(255), ofRandom(255), ofRandom(255), 54);
-		ofColor outer = ofColor(ofRandom(255), ofRandom(255), ofRandom(255), 189);
-		emitters[i].setColors(center, inner, outer);
-	}
+		emitters = ParticleEmitter::instance();
+		emitters->setOrigin(ofGetWidth()/2, ofGetHeight()/2);
+		emitters->setCurvingParticleRatio(0.8);
+		ofColor center = ofColor(241, 89, 148); // kennelijk verandert deze regel ook de achtergrond, maar ik snap niet waarom.
+		ofColor inner =  ofColor::white;
+		ofColor outer = ofColor(221, 139, 154, 189);
+		emitters->setColors(center, inner, outer);
 }
 
 void ofApp::update() {
-	ofBackground(0);
-
 	for (unsigned int i = 0; i < particles.size(); i++) {
 		particles[i]->move();
 	}
 
 	if (ofGetFrameNum() % 5 == 0) {
-		Particle* freshParticle1 = emitters[1].emit();
-		particles.push_back(freshParticle1);
-
-		Particle* freshParticle2 = emitters[2].emit();
-		particles.push_back(freshParticle2);
+		Particle* freshParticle = emitters->emit();
+		particles.push_back(freshParticle);
 	}
 	
 	reaper.cleanup(particles);
@@ -33,6 +26,7 @@ void ofApp::update() {
 }
 
 void ofApp::draw() {
+	ofBackground(0);
 	for (int i = 0; i < particles.size(); i++) {
 		particles[i]->draw();
 	}

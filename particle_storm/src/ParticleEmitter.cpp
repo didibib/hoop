@@ -5,8 +5,7 @@ ParticleEmitter::ParticleEmitter() {}
 Particle* ParticleEmitter::emit() {
 	Particle* newParticle;
 	if (ofRandom(1) < ratio) {
-		newParticle = new CurvingParticle(originX, originX);
-		
+		newParticle = new CurvingParticle(originX, originX);		
 	}
 	else {
 		newParticle = new Particle(originX, originX);
@@ -32,7 +31,7 @@ void ParticleEmitter::setColors(ofColor _center, ofColor _inner, ofColor _outer)
 	outer = _outer;
 }
 
-/*ParticleEmitter* ParticleEmitter::instance() {
+ParticleEmitter* ParticleEmitter::instance() {
 	if (!neo) {
 		neo = new ParticleEmitter();
 	}
@@ -40,4 +39,4 @@ void ParticleEmitter::setColors(ofColor _center, ofColor _inner, ofColor _outer)
 	return neo;
 }
 
-ParticleEmitter* ParticleEmitter::neo = 0;*/
+ParticleEmitter* ParticleEmitter::neo = 0;
